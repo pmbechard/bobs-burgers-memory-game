@@ -6,7 +6,6 @@ import GameBoard from './components/GameBoard';
 import Footer from './components/Footer';
 
 function App() {
-  const [score, setScore] = useState(0);
   const [best, setBest] = useState(0);
   const [level, setLevel] = useState(1);
 

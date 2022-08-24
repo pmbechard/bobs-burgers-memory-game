@@ -1,0 +1,10 @@
+.scoreboard {
+  padding: 1vh 5vw;
+  background-color: #aaa;
+}
+
+.scoreboard > ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

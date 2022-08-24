@@ -1,0 +1,17 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vh 5vw;
+  background-color: #dadada;
+}
+
+.navbar > li {
+  display: flex;
+  align-items: center;
+  gap: 5vw;
+}
+
+.navbar img {
+  height: 40px;
+}

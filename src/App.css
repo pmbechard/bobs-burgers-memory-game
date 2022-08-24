@@ -1,0 +1,11 @@
+/* FIXME: */
+@font-face {
+  font-family: 'bb-1';
+  src: local('bb-1'), url('./fonts/bb-1.ttf') format('truetype');
+}
+
+* {
+  margin: 0;
+  list-style: none;
+  font-family: 'bb-1' Arial, Helvetica, sans-serif;
+}

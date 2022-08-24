@@ -1,0 +1,8 @@
+.gameboard {
+  width: 80vw;
+  margin: 0 10vw;
+  border: 4px solid black;
+
+  /* Remove me */
+  height: 20vh;
+}
