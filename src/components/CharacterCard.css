@@ -8,6 +8,7 @@
   cursor: pointer;
   text-align: center;
   transition: all 0.1s ease-in-out;
+  border-radius: 20px;
 }
 
 .card img {
@@ -18,6 +19,7 @@
   border-top: 1px solid #f0262a;
   width: 100%;
   height: 7.5vh;
+  padding: 5px;
 }
 
 .card:hover {
