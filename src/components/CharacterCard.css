@@ -1,0 +1,28 @@
+.card {
+  border: 1px solid #f172a9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 30vh;
+  cursor: pointer;
+  text-align: center;
+}
+
+.card img {
+  height: 20vh;
+}
+
+.card h4 {
+  border-top: 1px solid #f172a9;
+  width: 100%;
+  height: 7.5vh;
+}
+
+.card:hover {
+  border: 5px solid #f172a9;
+}
+
+.card:active {
+  border: 5px solid #f0262a;
+}
