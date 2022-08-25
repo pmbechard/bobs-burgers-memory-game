@@ -7,4 +7,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: #9ac7e8;
+}
+
+.scoreboard li {
+  background-color: #9ac7e8;
 }

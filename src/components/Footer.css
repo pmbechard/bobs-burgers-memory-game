@@ -1,21 +1,26 @@
 footer {
   width: 100vw;
   background-color: #9ac7e8;
+  position: absolute;
+  bottom: 0;
 }
 
 small {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #9ac7e8;
 }
 
 small img {
   height: 15px;
   padding: 10px;
+  background-color: transparent;
 }
 
 small a {
   transition: all 0.5s ease-in-out;
+  background-color: transparent;
 }
 
 small a:hover {

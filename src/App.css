@@ -4,6 +4,7 @@
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
   box-sizing: border-box;
+  background-color: #efefef;
 }
 
 ul {
@@ -23,6 +24,10 @@ button {
   box-shadow: 1px 1px 1px black;
   font-weight: bold;
   transition: all 0.05s ease-in-out;
+}
+
+button > img {
+  background-color: #f0262a;
 }
 
 button:hover {
