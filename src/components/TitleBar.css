@@ -1,9 +1,21 @@
+@font-face {
+  font-family: 'bb-1';
+  src: url(../fonts/bb-font-1.woff);
+}
+
+#title {
+  font-family: 'bb-1', Arial, Helvetica, sans-serif;
+  font-weight: 100;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1vh 5vw;
-  background-color: #dadada;
+  background-color: #fcdd60;
+  /* color: #f0262a; */
+  font-size: 4rem;
 }
 
 .navbar > li {
@@ -12,6 +24,6 @@
   gap: 5vw;
 }
 
-.navbar img {
+#titlebar-logo {
   height: 40px;
 }

@@ -1,5 +1,23 @@
 footer {
   width: 100vw;
-  text-align: center;
-  background-color: #aaa;
+  background-color: #9ac7e8;
+}
+
+small {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+small img {
+  height: 15px;
+  padding: 10px;
+}
+
+small a {
+  transition: all 0.5s ease-in-out;
+}
+
+small a:hover {
+  transform: rotate(360deg);
 }
