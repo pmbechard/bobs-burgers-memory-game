@@ -17,6 +17,9 @@ function App() {
     };
 
     loadCards();
+    if (level > best) {
+      setBest(level);
+    }
     setLevel(level + 1);
   }, []);
 
@@ -52,7 +55,17 @@ function App() {
         }
       }
     }
-    setCurrentCharacters(currentCharacters.concat(newCharacters));
+    setCurrentCharacters(currentCharacters.concat(shuffleList(newCharacters)));
+  };
+
+  const shuffleList = (characterList) => {
+    for (let i = characterList.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = characterList[i];
+      characterList[i] = characterList[j];
+      characterList[j] = temp;
+    }
+    return characterList;
   };
 
   return (

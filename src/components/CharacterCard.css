@@ -1,5 +1,5 @@
 .card {
-  border: 1px solid #f172a9;
+  border: 1px solid #f0262a;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,6 +7,7 @@
   height: 30vh;
   cursor: pointer;
   text-align: center;
+  transition: all 0.1s ease-in-out;
 }
 
 .card img {
@@ -14,13 +15,13 @@
 }
 
 .card h4 {
-  border-top: 1px solid #f172a9;
+  border-top: 1px solid #f0262a;
   width: 100%;
   height: 7.5vh;
 }
 
 .card:hover {
-  border: 5px solid #f172a9;
+  border: 10px solid #f0262a;
 }
 
 .card:active {
