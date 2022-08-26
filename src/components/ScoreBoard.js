@@ -6,8 +6,8 @@ function ScoreBoard(props) {
   return (
     <div className='scoreboard'>
       <ul>
-        <li>Highest Level: 0</li>
-        <li>Current Level: 1</li>
+        <li>Highest Level: {props.best}</li>
+        <li>Current Level: {props.level}</li>
         <li>
           <button onClick={props.restart}>
             <img src={restartIcon} alt='restart' />

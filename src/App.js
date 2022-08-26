@@ -18,10 +18,11 @@ function App() {
     };
     loadCards();
     checkBestLevel();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [level]);
 
   const checkBestLevel = () => {
-    if (level > best) setBest(level);
+    if (level > best + 1) setBest(level);
   };
 
   const fetchCharacters = async () => {
@@ -58,17 +59,17 @@ function App() {
         }
       }
     }
-    setCurrentCharacters(currentCharacters.concat(shuffleList(newCharacters)));
+    shuffleList(currentCharacters.concat(newCharacters));
   };
 
-  const shuffleList = (characterList) => {
+  const shuffleList = (characterList = currentCharacters) => {
     for (let i = characterList.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       const temp = characterList[i];
       characterList[i] = characterList[j];
       characterList[j] = temp;
     }
-    return characterList;
+    setCurrentCharacters(characterList);
   };
 
   const restart = () => {
@@ -80,8 +81,9 @@ function App() {
   return (
     <div>
       <TitleBar />
-      <ScoreBoard restart={restart} />
-      <GameBoard cards={currentCharacters} />;
+      <ScoreBoard restart={restart} level={level} best={best} />
+      <GameBoard cards={currentCharacters} />
+      ;
       <Footer />
     </div>
   );
