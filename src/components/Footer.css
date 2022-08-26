@@ -1,7 +1,7 @@
 footer {
   width: 100vw;
   background-color: #9ac7e8;
-  position: absolute;
+  position: sticky;
   bottom: 0;
 }
 

@@ -2,14 +2,14 @@ import React from 'react';
 import './ScoreBoard.css';
 import restartIcon from './img/restart.png';
 
-function ScoreBoard() {
+function ScoreBoard(props) {
   return (
     <div className='scoreboard'>
       <ul>
         <li>Highest Level: 0</li>
         <li>Current Level: 1</li>
         <li>
-          <button>
+          <button onClick={props.restart}>
             <img src={restartIcon} alt='restart' />
           </button>
         </li>

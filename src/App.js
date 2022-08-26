@@ -7,21 +7,22 @@ import Footer from './components/Footer';
 
 function App() {
   const [best, setBest] = useState(0);
-  const [level, setLevel] = useState(0);
+  const [level, setLevel] = useState(1);
   const [currentCharacters, setCurrentCharacters] = useState([]);
-  const characterIndexList = [];
+  let characterIndexList = [];
 
   useEffect(() => {
+    if (level < 1) setLevel(1);
     const loadCards = async () => {
       await fetchCharacters();
     };
-
     loadCards();
-    if (level > best) {
-      setBest(level);
-    }
-    setLevel(level + 1);
-  }, []);
+    checkBestLevel();
+  }, [level]);
+
+  const checkBestLevel = () => {
+    if (level > best) setBest(level);
+  };
 
   const fetchCharacters = async () => {
     const newCharacters = [];
@@ -38,6 +39,7 @@ function App() {
           img: newCharacterData.image,
         };
         newCharacters.push(newCharacterObj);
+        characterIndexList.push(newCharacterObj.id);
       }
     } else {
       while (newCharacters.length < 5) {
@@ -52,6 +54,7 @@ function App() {
             img: newCharacterData.image,
           };
           newCharacters.push(newCharacterObj);
+          characterIndexList.push(newCharacterObj.id);
         }
       }
     }
@@ -68,11 +71,17 @@ function App() {
     return characterList;
   };
 
+  const restart = () => {
+    characterIndexList = [];
+    setCurrentCharacters([]);
+    setLevel(0);
+  };
+
   return (
     <div>
       <TitleBar />
-      <ScoreBoard />
-      <GameBoard cards={currentCharacters} />
+      <ScoreBoard restart={restart} />
+      <GameBoard cards={currentCharacters} />;
       <Footer />
     </div>
   );
