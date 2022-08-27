@@ -56,11 +56,11 @@ img {
 }
 
 .modal {
-  height: 40vh;
-  width: 60vh;
+  padding: 10px;
+  width: 70vh;
   position: absolute;
-  bottom: calc(50% - 20vh);
-  left: calc(50% - 30vh);
+  bottom: calc(50% - 15vh);
+  left: calc(50% - 35vh);
   background-color: #fcdd60;
   border-radius: 12px;
   border: 3px solid #f0262a;
@@ -74,6 +74,8 @@ img {
 
 .modal > h2 {
   background-color: transparent;
+  text-align: center;
+  padding: 10px;
 }
 
 .modal > button {

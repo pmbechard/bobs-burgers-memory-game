@@ -20,6 +20,7 @@ function App() {
   const [clickedCards, setClickedCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [getBOTD, setBOTD] = useState(null);
   let characterIndexList = [];
 
   useEffect(() => {
@@ -39,6 +40,9 @@ function App() {
     if (clickedCards.length === level * 5) {
       setClickedCards([]);
       setLevel(level + 1);
+    }
+    if (getBOTD === null) {
+      getBurgerOfTheDay();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clickedCards]);
@@ -67,7 +71,7 @@ function App() {
         newCharacters.push(newCharacterObj);
         characterIndexList.push(newCharacterObj.id);
       }
-    } else {
+    } else if (currentCharacters.length < level * 5) {
       while (newCharacters.length < 5) {
         let i = Math.round(Math.random() * 500 + 1);
         if (!characterIndexList.includes(`${i}`)) {
@@ -84,6 +88,8 @@ function App() {
           characterIndexList.push(newCharacterObj.id);
         }
       }
+    } else {
+      return;
     }
     shuffleList(currentCharacters.concat(newCharacters));
   };
@@ -104,6 +110,7 @@ function App() {
     setLevel(0);
     setClickedCards([]);
     setIsGameOver(false);
+    setBOTD(null);
   };
 
   const handleCardClick = (e) => {
@@ -125,6 +132,15 @@ function App() {
     return lvl * 5 + calculateStreak(lvl - 1);
   };
 
+  const getBurgerOfTheDay = async () => {
+    const i = parseInt(Math.random() * 333 + 1);
+    const botdData = await fetch(
+      `https://bobsburgers-api.herokuapp.com/burgerOfTheDay/${i}`
+    );
+    const botdJSON = await botdData.json();
+    setBOTD(botdJSON.name);
+  };
+
   return (
     <div>
       <TitleBar />
@@ -140,7 +156,7 @@ function App() {
         display={!isLoading ? 'visible' : 'hidden'}
       />
       <LoadingIcon loading={isLoading} />
-      {isGameOver ? <GameOverModal restart={restart} /> : null}
+      {isGameOver ? <GameOverModal restart={restart} botd={getBOTD} /> : null}
       <Footer />
     </div>
   );

@@ -1,0 +1,21 @@
+.coupon {
+  padding: 10px;
+  border: 3px dashed black;
+  height: 20vh;
+  width: 50vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+  text-align: center;
+}
+
+#coupon-img {
+  height: 40px;
+}
+
+.coupon small {
+  background-color: transparent;
+  font-size: 12px;
+}
