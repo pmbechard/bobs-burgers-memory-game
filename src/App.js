@@ -9,6 +9,7 @@ function App() {
   const [best, setBest] = useState(0);
   const [level, setLevel] = useState(1);
   const [currentCharacters, setCurrentCharacters] = useState([]);
+  const [clickedCards, setClickedCards] = useState([]);
   let characterIndexList = [];
 
   useEffect(() => {
@@ -20,6 +21,15 @@ function App() {
     checkBestLevel();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [level]);
+
+  useEffect(() => {
+    shuffleList();
+    if (clickedCards.length === level * 5) {
+      setClickedCards([]);
+      setLevel(level + 1);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [clickedCards]);
 
   const checkBestLevel = () => {
     if (level > best + 1) setBest(level);
@@ -51,6 +61,7 @@ function App() {
           );
           newCharacterData = await newCharacterData.json();
           const newCharacterObj = {
+            id: newCharacterData.id,
             name: newCharacterData.name,
             img: newCharacterData.image,
           };
@@ -76,10 +87,20 @@ function App() {
     characterIndexList = [];
     setCurrentCharacters([]);
     setLevel(0);
+    setClickedCards([]);
   };
 
   const handleCardClick = (e) => {
-    console.log(`clicked: ${e.target.id}`);
+    if (clickedCards.includes(e.target.id)) {
+      gameOver();
+    } else {
+      shuffleList();
+      setClickedCards(clickedCards.concat(e.target.id));
+    }
+  };
+
+  const gameOver = () => {
+    restart();
   };
 
   return (

@@ -1,13 +1,14 @@
 import React from 'react';
 import CharacterCard from './CharacterCard';
 import './GameBoard.css';
+import uniqid from 'uniqid';
 
 function GameBoard(props) {
   return (
     <div className='gameboard'>
       {props.cards.map((obj) => {
         return (
-          <div key={obj.id}>
+          <div key={uniqid()}>
             <CharacterCard data={obj} click={props.click} />
           </div>
         );

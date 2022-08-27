@@ -15,7 +15,9 @@
 }
 
 .card img {
+  margin-top: 10px;
   height: 20vh;
+  max-width: 15vh;
   pointer-events: none;
 }
 
