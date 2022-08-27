@@ -5,6 +5,7 @@ import ScoreBoard from './components/ScoreBoard';
 import GameBoard from './components/GameBoard';
 import Footer from './components/Footer';
 import LoadingIcon from './components/LoadingIcon';
+import GameOverModal from './components/GameOverModal';
 
 // FIXME: Doubles appearing in character cards
 // TODO: Add common characters for first 30 levels
@@ -18,6 +19,7 @@ function App() {
   const [currentCharacters, setCurrentCharacters] = useState([]);
   const [clickedCards, setClickedCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isGameOver, setIsGameOver] = useState(false);
   let characterIndexList = [];
 
   useEffect(() => {
@@ -101,6 +103,7 @@ function App() {
     setCurrentCharacters([]);
     setLevel(0);
     setClickedCards([]);
+    setIsGameOver(false);
   };
 
   const handleCardClick = (e) => {
@@ -113,7 +116,7 @@ function App() {
   };
 
   const gameOver = () => {
-    restart();
+    setIsGameOver(true);
   };
 
   const calculateStreak = (lvl) => {
@@ -137,6 +140,7 @@ function App() {
         display={!isLoading ? 'visible' : 'hidden'}
       />
       <LoadingIcon loading={isLoading} />
+      {isGameOver ? <GameOverModal restart={restart} /> : null}
       <Footer />
     </div>
   );

@@ -54,3 +54,28 @@ img {
 .hidden {
   visibility: hidden;
 }
+
+.modal {
+  height: 40vh;
+  width: 60vh;
+  position: absolute;
+  bottom: calc(50% - 20vh);
+  left: calc(50% - 30vh);
+  background-color: #fcdd60;
+  border-radius: 12px;
+  border: 3px solid #f0262a;
+  box-shadow: -1.5px 1.5px 1.5px black;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modal > h2 {
+  background-color: transparent;
+}
+
+.modal > button {
+  border-radius: 8px;
+}
