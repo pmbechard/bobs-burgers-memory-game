@@ -1,0 +1,22 @@
+#loading-icon {
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  position: absolute;
+  bottom: 65%;
+  left: 50%;
+  z-index: 1;
+  background-color: transparent;
+  height: 40px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

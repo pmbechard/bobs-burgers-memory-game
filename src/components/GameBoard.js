@@ -8,7 +8,7 @@ function GameBoard(props) {
     <div className='gameboard'>
       {props.cards.map((obj) => {
         return (
-          <div key={uniqid()}>
+          <div key={uniqid()} className={props.display}>
             <CharacterCard data={obj} click={props.click} />
           </div>
         );

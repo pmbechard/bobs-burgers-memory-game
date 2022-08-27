@@ -46,3 +46,11 @@ button:active {
 img {
   height: 20px;
 }
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+}

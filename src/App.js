@@ -4,21 +4,28 @@ import TitleBar from './components/TitleBar';
 import ScoreBoard from './components/ScoreBoard';
 import GameBoard from './components/GameBoard';
 import Footer from './components/Footer';
+import LoadingIcon from './components/LoadingIcon';
 
-// TODO: Add loading screens
+// FIXME: Doubles appearing in character cards
 // TODO: Add common characters for first 30 levels
+// TODO: Add Info modal component
+// TODO: Add GameOver modal component with random burger coupon
+// FIXME: GitHub logo not appearing in Footer component
 
 function App() {
   const [best, setBest] = useState(localStorage.getItem('best') || '0');
   const [level, setLevel] = useState(1);
   const [currentCharacters, setCurrentCharacters] = useState([]);
   const [clickedCards, setClickedCards] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   let characterIndexList = [];
 
   useEffect(() => {
     if (level < 1) setLevel(1);
     const loadCards = async () => {
+      setIsLoading(true);
       await fetchCharacters();
+      setIsLoading(false);
     };
     loadCards();
     checkBestLevel();
@@ -35,8 +42,10 @@ function App() {
   }, [clickedCards]);
 
   const checkBestLevel = () => {
-    if (level > best + 1) setBest(level - 1);
-    localStorage.setItem('best', `${best}`);
+    if (level > parseInt(best) + 1) {
+      setBest(level - 1);
+    }
+    localStorage.setItem('best', `${level - 1}`);
   };
 
   const fetchCharacters = async () => {
@@ -58,8 +67,8 @@ function App() {
       }
     } else {
       while (newCharacters.length < 5) {
-        let i = Math.round(Math.random() * 501);
-        if (!characterIndexList.includes(i)) {
+        let i = Math.round(Math.random() * 500 + 1);
+        if (!characterIndexList.includes(`${i}`)) {
           let newCharacterData = await fetch(
             `https://bobsburgers-api.herokuapp.com/characters/${i}`
           );
@@ -122,7 +131,12 @@ function App() {
         best={best}
         streak={calculateStreak(level - 1) + clickedCards.length}
       />
-      <GameBoard cards={currentCharacters} click={handleCardClick} />
+      <GameBoard
+        cards={currentCharacters}
+        click={handleCardClick}
+        display={!isLoading ? 'visible' : 'hidden'}
+      />
+      <LoadingIcon loading={isLoading} />
       <Footer />
     </div>
   );
