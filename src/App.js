@@ -5,8 +5,11 @@ import ScoreBoard from './components/ScoreBoard';
 import GameBoard from './components/GameBoard';
 import Footer from './components/Footer';
 
+// TODO: Add loading screens
+// TODO: Add common characters for first 30 levels
+
 function App() {
-  const [best, setBest] = useState(0);
+  const [best, setBest] = useState(localStorage.getItem('best') || '0');
   const [level, setLevel] = useState(1);
   const [currentCharacters, setCurrentCharacters] = useState([]);
   const [clickedCards, setClickedCards] = useState([]);
@@ -32,7 +35,8 @@ function App() {
   }, [clickedCards]);
 
   const checkBestLevel = () => {
-    if (level > best + 1) setBest(level);
+    if (level > best + 1) setBest(level - 1);
+    localStorage.setItem('best', `${best}`);
   };
 
   const fetchCharacters = async () => {
@@ -103,10 +107,21 @@ function App() {
     restart();
   };
 
+  const calculateStreak = (lvl) => {
+    if (lvl < 1) return 0;
+    if (lvl === 1) return 5;
+    return lvl * 5 + calculateStreak(lvl - 1);
+  };
+
   return (
     <div>
       <TitleBar />
-      <ScoreBoard restart={restart} level={level} best={best} />
+      <ScoreBoard
+        restart={restart}
+        level={level}
+        best={best}
+        streak={calculateStreak(level - 1) + clickedCards.length}
+      />
       <GameBoard cards={currentCharacters} click={handleCardClick} />
       <Footer />
     </div>
