@@ -16,6 +16,7 @@
 
 .card img {
   height: 20vh;
+  pointer-events: none;
 }
 
 .card h4 {
@@ -26,6 +27,7 @@
   background-color: white;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  pointer-events: none;
 }
 
 .card:hover {

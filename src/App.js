@@ -78,12 +78,15 @@ function App() {
     setLevel(0);
   };
 
+  const handleCardClick = (e) => {
+    console.log(`clicked: ${e.target.id}`);
+  };
+
   return (
     <div>
       <TitleBar />
       <ScoreBoard restart={restart} level={level} best={best} />
-      <GameBoard cards={currentCharacters} />
-      ;
+      <GameBoard cards={currentCharacters} click={handleCardClick} />
       <Footer />
     </div>
   );
