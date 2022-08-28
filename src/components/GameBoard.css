@@ -6,3 +6,27 @@
   gap: 1vw;
   min-height: 200px;
 }
+
+@media only screen and (max-width: 950px) {
+  .gameboard {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .gameboard {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .gameboard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .gameboard {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

@@ -48,11 +48,11 @@ img {
 }
 
 .visible {
-  visibility: visible;
+  display: block;
 }
 
 .hidden {
-  visibility: hidden;
+  display: none;
 }
 
 .modal {
@@ -80,4 +80,13 @@ img {
 
 .modal > button {
   border-radius: 8px;
+}
+
+@media only screen and (max-width: 750px) {
+  .modal {
+    height: 100%;
+    width: 100vw;
+    top: 0;
+    left: 0;
+  }
 }

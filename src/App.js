@@ -140,7 +140,7 @@ function App() {
       <GameBoard
         cards={currentCharacters}
         click={handleCardClick}
-        display={!isLoading ? 'visible' : 'hidden'}
+        display={!isLoading && !isGameOver ? 'visible' : 'hidden'}
       />
       <LoadingIcon loading={isLoading} />
       {isGameOver ? <GameOverModal restart={restart} botd={getBOTD} /> : null}

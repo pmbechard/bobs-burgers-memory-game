@@ -29,3 +29,15 @@
   height: 40px;
   background-color: #fcdd60;
 }
+
+@media only screen and (max-width: 750px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+  .navbar > li {
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+  }
+}

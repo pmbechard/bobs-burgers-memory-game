@@ -13,3 +13,9 @@
 .scoreboard li {
   background-color: #9ac7e8;
 }
+
+@media only screen and (max-width: 750px) {
+  .scoreboard > ul {
+    flex-direction: column;
+  }
+}
