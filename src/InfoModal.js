@@ -20,7 +20,7 @@ function InfoModal(props) {
             target='_blank'
             rel='noreferrer'
           >
-            Bob's Burgers API
+            Bob's Burgers API.
           </a>
         </h4>
         <h4>
