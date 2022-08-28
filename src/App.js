@@ -8,9 +8,6 @@ import LoadingIcon from './components/LoadingIcon';
 import GameOverModal from './components/GameOverModal';
 import InfoModal from './InfoModal';
 
-// TODO: Add common characters for first 30 levels
-// TODO: Add Info modal component
-
 function App() {
   const [best, setBest] = useState(localStorage.getItem('best') || '0');
   const [level, setLevel] = useState(1);
@@ -20,6 +17,14 @@ function App() {
   const [isGameOver, setIsGameOver] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [getBurger, setBurger] = useState(null);
+  const [getCommonCharacterIndex, setCommonCharacterIndex] = useState(0);
+  const [commonCharacters, setCommonCharacters] = useState(
+    [
+      48, 276, 281, 171, 477, 230, 231, 468, 323, 506, 60, 394, 313, 170, 441,
+      233, 187, 207, 467, 50, 411, 296, 110, 421, 159, 142, 315, 45, 98, 192,
+      148, 189,
+    ].sort(() => Math.random() - 0.5)
+  );
 
   useEffect(() => {
     if (level < 1) setLevel(1);
@@ -51,10 +56,7 @@ function App() {
   const fetchCharacters = async () => {
     if (currentCharacters.length >= level * 5) return;
     const newCharacters = [];
-    const newIndices =
-      currentCharacters.length === 0
-        ? [48, 276, 281, 171, 477]
-        : generateIndices();
+    const newIndices = generateIndices();
     for (let i = 0; i < 5; i++) {
       let newCharacterData = await fetch(
         `https://bobsburgers-api.herokuapp.com/characters/${newIndices[i]}`
@@ -70,20 +72,6 @@ function App() {
     shuffleList(currentCharacters.concat(newCharacters));
   };
 
-  const generateIndices = () => {
-    // TODO: Insert logic for common characters
-    const currentCharacterIndices = currentCharacters.map((character) => {
-      return parseInt(character.id);
-    });
-    const arr = [];
-    while (arr.length < 5) {
-      const i = Math.floor(Math.random() * 502) + 1;
-      if (arr.indexOf(i) === -1 && currentCharacterIndices.indexOf(i) === -1)
-        arr.push(i);
-    }
-    return arr;
-  };
-
   const shuffleList = (characterList = currentCharacters) => {
     for (let i = characterList.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -92,6 +80,27 @@ function App() {
       characterList[j] = temp;
     }
     setCurrentCharacters(characterList);
+  };
+
+  const generateIndices = () => {
+    const currentCharacterIndices = currentCharacters.map((character) => {
+      return parseInt(character.id);
+    });
+    const arr = [];
+    for (let i = 0; i < 5; i++) {
+      if (commonCharacters.length > getCommonCharacterIndex) {
+        arr.push(commonCharacters[getCommonCharacterIndex + i]);
+      } else {
+        const index = Math.floor(Math.random() * 502) + 1;
+        if (
+          arr.indexOf(index) === -1 &&
+          currentCharacterIndices.indexOf(index) === -1
+        )
+          arr.push(index);
+      }
+    }
+    setCommonCharacterIndex(getCommonCharacterIndex + 5);
+    return arr;
   };
 
   const restart = () => {
