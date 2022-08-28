@@ -1,5 +1,7 @@
 .modal-link,
-.modal h6 {
+.modal h4,
+.modal p {
+  text-align: center;
   background-color: transparent;
   padding: 10px;
 }
