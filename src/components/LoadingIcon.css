@@ -20,3 +20,11 @@
     transform: rotate(360deg);
   }
 }
+
+@media only screen and (max-width: 750px) {
+  #loading-icon {
+    height: 50px;
+    bottom: 30%;
+    left: 45%;
+  }
+}
