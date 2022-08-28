@@ -13,12 +13,22 @@ function InfoModal(props) {
       <p></p>
       <h4>
         Created by Peyton Bechard, 2022, using Zachary Spielberger's awesome
-        <a href='https://www.bobsburgersapi.com/' className='modal-link'>
+        <a
+          href='https://www.bobsburgersapi.com/'
+          className='modal-link'
+          target='_blank'
+          rel='noreferrer'
+        >
           Bob's Burgers API
         </a>
       </h4>
       <h4>
-        <a href='https://www.github.com/pmbechard' className='modal-link'>
+        <a
+          href='https://www.github.com/pmbechard'
+          className='modal-link'
+          target='_blank'
+          rel='noreferrer'
+        >
           Check out the code and my other projects on GitHub.
         </a>
       </h4>
