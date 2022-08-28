@@ -9,7 +9,6 @@ import GameOverModal from './components/GameOverModal';
 
 // TODO: Add common characters for first 30 levels
 // TODO: Add Info modal component
-// FIXME: GitHub logo not appearing in Footer component
 
 function App() {
   const [best, setBest] = useState(localStorage.getItem('best') || '0');

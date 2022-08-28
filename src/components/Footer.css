@@ -14,15 +14,17 @@ small {
 
 small img {
   height: 15px;
-  padding: 10px;
+  padding: 3px 5px 0 0;
+  margin-bottom: -2px;
   background-color: transparent;
 }
 
 small a {
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
   background-color: transparent;
 }
 
 small a:hover {
-  transform: rotate(360deg);
+  transform: scale(1.2);
+  opacity: 0.8;
 }
