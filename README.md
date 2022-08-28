@@ -1,5 +1,7 @@
 # Bob's Burgers Memory Game
 
+#### A Bob's Burgers themed memory game made using React.
+
 <img src='./preview.png' alt='preview'>
 
 ### Live at: https://pmbechard.github.io/bobs-burgers-memory-game/
@@ -12,5 +14,4 @@ characters will be added.
 
 ## Credits:
 
-A memory game made using Bob's Burgers API (https://www.bobsburgersapi.com/) with React.
-Shout out to Zachary Spielberger and his awesome API for making this possible.
+Shout out to Zachary Spielberger and his awesome [Bob's Burgers API](https://www.bobsburgersapi.com/) for making this possible.
