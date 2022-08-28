@@ -7,10 +7,8 @@ import Footer from './components/Footer';
 import LoadingIcon from './components/LoadingIcon';
 import GameOverModal from './components/GameOverModal';
 
-// FIXME: Doubles appearing in character cards
 // TODO: Add common characters for first 30 levels
 // TODO: Add Info modal component
-// TODO: Add GameOver modal component with random burger coupon
 // FIXME: GitHub logo not appearing in Footer component
 
 function App() {
@@ -21,7 +19,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [getBOTD, setBOTD] = useState(null);
-  let characterIndexList = [];
 
   useEffect(() => {
     if (level < 1) setLevel(1);
@@ -55,43 +52,34 @@ function App() {
   };
 
   const fetchCharacters = async () => {
+    if (currentCharacters.length >= level * 5) return;
     const newCharacters = [];
-    if (currentCharacters.length === 0) {
-      const defaultCharacters = [48, 276, 281, 171, 477];
-      for (const i of defaultCharacters) {
-        let newCharacterData = await fetch(
-          `https://bobsburgers-api.herokuapp.com/characters/${i}`
-        );
-        newCharacterData = await newCharacterData.json();
-        const newCharacterObj = {
-          id: newCharacterData.id,
-          name: newCharacterData.name,
-          img: newCharacterData.image,
-        };
-        newCharacters.push(newCharacterObj);
-        characterIndexList.push(newCharacterObj.id);
-      }
-    } else if (currentCharacters.length < level * 5) {
-      while (newCharacters.length < 5) {
-        let i = Math.round(Math.random() * 500 + 1);
-        if (!characterIndexList.includes(`${i}`)) {
-          let newCharacterData = await fetch(
-            `https://bobsburgers-api.herokuapp.com/characters/${i}`
-          );
-          newCharacterData = await newCharacterData.json();
-          const newCharacterObj = {
-            id: newCharacterData.id,
-            name: newCharacterData.name,
-            img: newCharacterData.image,
-          };
-          newCharacters.push(newCharacterObj);
-          characterIndexList.push(newCharacterObj.id);
-        }
-      }
-    } else {
-      return;
+    const newIndices =
+      currentCharacters.length === 0
+        ? [48, 276, 281, 171, 477]
+        : generateIndices();
+    for (let i = 0; i < 5; i++) {
+      let newCharacterData = await fetch(
+        `https://bobsburgers-api.herokuapp.com/characters/${newIndices[i]}`
+      );
+      newCharacterData = await newCharacterData.json();
+      const newCharacterObj = {
+        id: newCharacterData.id,
+        name: newCharacterData.name,
+        img: newCharacterData.image,
+      };
+      newCharacters.push(newCharacterObj);
     }
-    shuffleList(currentCharacters.concat(newCharacters));
+    await shuffleList(currentCharacters.concat(newCharacters));
+  };
+
+  const generateIndices = () => {
+    const arr = [];
+    while (arr.length < 8) {
+      const i = Math.floor(Math.random() * 100) + 1;
+      if (arr.indexOf(i) === -1) arr.push(i);
+    }
+    return arr;
   };
 
   const shuffleList = (characterList = currentCharacters) => {
@@ -105,7 +93,6 @@ function App() {
   };
 
   const restart = () => {
-    characterIndexList = [];
     setCurrentCharacters([]);
     setLevel(0);
     setClickedCards([]);
