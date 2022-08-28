@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/bobs-burgers-memory-game/static/css/main.105201ba.css",
+    "main.js": "/bobs-burgers-memory-game/static/js/main.14ade90f.js",
+    "static/media/burger.png": "/bobs-burgers-memory-game/static/media/burger.fde474c9f99b4028a04f.png",
+    "static/media/bb-font-1.woff": "/bobs-burgers-memory-game/static/media/bb-font-1.f4eff675dda199f16c63.woff",
+    "index.html": "/bobs-burgers-memory-game/index.html",
+    "main.105201ba.css.map": "/bobs-burgers-memory-game/static/css/main.105201ba.css.map",
+    "main.14ade90f.js.map": "/bobs-burgers-memory-game/static/js/main.14ade90f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.105201ba.css",
+    "static/js/main.14ade90f.js"
+  ]
+}
