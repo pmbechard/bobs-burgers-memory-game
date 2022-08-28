@@ -83,12 +83,13 @@ function App() {
   };
 
   const generateIndices = () => {
+    // FIXME: might have a duplication error at level 7
     const currentCharacterIndices = currentCharacters.map((character) => {
       return parseInt(character.id);
     });
     const arr = [];
     for (let i = 0; i < 5; i++) {
-      if (commonCharacters.length > getCommonCharacterIndex) {
+      if (commonCharacters.length - 2 > getCommonCharacterIndex) {
         arr.push(commonCharacters[getCommonCharacterIndex + i]);
       } else {
         const index = Math.floor(Math.random() * 502) + 1;
