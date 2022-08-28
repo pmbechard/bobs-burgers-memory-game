@@ -5,7 +5,11 @@ function InfoModal(props) {
   return (
     <div className='modal'>
       <h2>Instructions:</h2>
-      <p>In each level, you can only click on each character one time!</p>
+      <p>
+        In each level, you can only click on each character one time! Click all
+        characters once to advance to the next level where 5 more characters
+        will be added.
+      </p>
       <p></p>
       <h4>
         Created by Peyton Bechard, 2022, using Zachary Spielberger's awesome
