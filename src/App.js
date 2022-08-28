@@ -18,7 +18,7 @@ function App() {
   const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [getBurger, setBurger] = useState(null);
   const [getCommonCharacterIndex, setCommonCharacterIndex] = useState(0);
-  const [commonCharacters] = useState(
+  const [commonCharacters, setCommonCharacters] = useState(
     [
       48, 276, 281, 171, 477, 230, 231, 468, 323, 506, 60, 394, 313, 170, 441,
       233, 187, 207, 467, 50, 411, 296, 110, 421, 159, 142, 315, 45, 98, 192,
@@ -109,6 +109,14 @@ function App() {
     setClickedCards([]);
     setIsGameOver(false);
     setBurger(null);
+    setCommonCharacterIndex(0);
+    setCommonCharacters(
+      [
+        48, 276, 281, 171, 477, 230, 231, 468, 323, 506, 60, 394, 313, 170, 441,
+        233, 187, 207, 467, 50, 411, 296, 110, 421, 159, 142, 315, 45, 98, 192,
+        148, 189,
+      ].sort(() => Math.random() - 0.5)
+    );
   };
 
   const handleCardClick = (e) => {
