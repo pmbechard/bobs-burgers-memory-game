@@ -131,7 +131,7 @@ function App() {
   };
 
   const getBurgerOfTheDay = async () => {
-    const i = parseInt(Math.random() * 333 + 1);
+    let i = parseInt(Math.random() * 333 + 1);
     if (i === 173) i++;
     const botdData = await fetch(
       `https://bobsburgers-api.herokuapp.com/burgerOfTheDay/${i}`
