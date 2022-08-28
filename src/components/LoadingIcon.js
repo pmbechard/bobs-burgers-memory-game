@@ -1,6 +1,6 @@
 import React from 'react';
 import './LoadingIcon.css';
-import loadingIcon from './img/loading.png';
+import loadingIcon from './img/burger.png';
 
 function LoadingIcon(props) {
   if (props.loading === true) {

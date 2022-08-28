@@ -18,7 +18,7 @@ function App() {
   const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [getBurger, setBurger] = useState(null);
   const [getCommonCharacterIndex, setCommonCharacterIndex] = useState(0);
-  const [commonCharacters, setCommonCharacters] = useState(
+  const [commonCharacters] = useState(
     [
       48, 276, 281, 171, 477, 230, 231, 468, 323, 506, 60, 394, 313, 170, 441,
       233, 187, 207, 467, 50, 411, 296, 110, 421, 159, 142, 315, 45, 98, 192,
@@ -132,6 +132,7 @@ function App() {
 
   const getBurgerOfTheDay = async () => {
     const i = parseInt(Math.random() * 333 + 1);
+    if (i === 173) i++;
     const botdData = await fetch(
       `https://bobsburgers-api.herokuapp.com/burgerOfTheDay/${i}`
     );
