@@ -65,7 +65,7 @@ img {
   border-radius: 12px;
   border: 3px solid #f0262a;
   box-shadow: -1.5px 1.5px 1.5px black;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,6 +80,16 @@ img {
 
 .modal > button {
   border-radius: 8px;
+}
+
+.modal-backdrop {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  background-color: rgb(0, 0, 0, 0.4);
 }
 
 @media only screen and (max-width: 750px) {

@@ -156,7 +156,9 @@ function App() {
       <GameBoard
         cards={currentCharacters}
         click={handleCardClick}
-        display={!isLoading && !isGameOver ? 'visible' : 'hidden'}
+        display={
+          !isLoading && !isGameOver && !isInfoOpen ? 'visible' : 'hidden'
+        }
       />
       <LoadingIcon loading={isLoading} />
       {isGameOver ? <GameOverModal restart={restart} botd={getBurger} /> : null}
