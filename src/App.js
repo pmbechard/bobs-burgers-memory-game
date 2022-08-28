@@ -38,16 +38,12 @@ function App() {
       setClickedCards([]);
       setLevel(level + 1);
     }
-    if (getBOTD === null) {
-      getBurgerOfTheDay();
-    }
+    if (getBOTD === null) getBurgerOfTheDay();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clickedCards]);
 
   const checkBestLevel = () => {
-    if (level > parseInt(best) + 1) {
-      setBest(level - 1);
-    }
+    if (level > parseInt(best) + 1) setBest(level - 1);
     localStorage.setItem('best', `${level - 1}`);
   };
 
@@ -70,14 +66,19 @@ function App() {
       };
       newCharacters.push(newCharacterObj);
     }
-    await shuffleList(currentCharacters.concat(newCharacters));
+    shuffleList(currentCharacters.concat(newCharacters));
   };
 
   const generateIndices = () => {
+    // TODO: Insert logic for common characters
+    const currentCharacterIndices = currentCharacters.map((character) => {
+      return parseInt(character.id);
+    });
     const arr = [];
-    while (arr.length < 8) {
-      const i = Math.floor(Math.random() * 100) + 1;
-      if (arr.indexOf(i) === -1) arr.push(i);
+    while (arr.length < 5) {
+      const i = Math.floor(Math.random() * 502) + 1;
+      if (arr.indexOf(i) === -1 && currentCharacterIndices.indexOf(i) === -1)
+        arr.push(i);
     }
     return arr;
   };
