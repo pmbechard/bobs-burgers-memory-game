@@ -6,7 +6,7 @@ import GameBoard from './components/GameBoard';
 import Footer from './components/Footer';
 import LoadingIcon from './components/LoadingIcon';
 import GameOverModal from './components/GameOverModal';
-import InfoModal from './InfoModal';
+import InfoModal from './components/InfoModal';
 
 function App() {
   const [best, setBest] = useState(localStorage.getItem('best') || '0');
