@@ -6,6 +6,7 @@ import GameBoard from './components/GameBoard';
 import Footer from './components/Footer';
 import LoadingIcon from './components/LoadingIcon';
 import GameOverModal from './components/GameOverModal';
+import InfoModal from './InfoModal';
 
 // TODO: Add common characters for first 30 levels
 // TODO: Add Info modal component
@@ -17,7 +18,8 @@ function App() {
   const [clickedCards, setClickedCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
-  const [getBOTD, setBOTD] = useState(null);
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
+  const [getBurger, setBurger] = useState(null);
 
   useEffect(() => {
     if (level < 1) setLevel(1);
@@ -37,7 +39,7 @@ function App() {
       setClickedCards([]);
       setLevel(level + 1);
     }
-    if (getBOTD === null) getBurgerOfTheDay();
+    if (getBurger === null) getBurgerOfTheDay();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clickedCards]);
 
@@ -97,7 +99,7 @@ function App() {
     setLevel(0);
     setClickedCards([]);
     setIsGameOver(false);
-    setBOTD(null);
+    setBurger(null);
   };
 
   const handleCardClick = (e) => {
@@ -125,12 +127,16 @@ function App() {
       `https://bobsburgers-api.herokuapp.com/burgerOfTheDay/${i}`
     );
     const botdJSON = await botdData.json();
-    setBOTD(botdJSON.name);
+    setBurger(botdJSON.name);
+  };
+
+  const openInfoModal = () => {
+    setIsInfoOpen(!isInfoOpen);
   };
 
   return (
     <div>
-      <TitleBar />
+      <TitleBar info={openInfoModal} />
       <ScoreBoard
         restart={restart}
         level={level}
@@ -143,7 +149,8 @@ function App() {
         display={!isLoading && !isGameOver ? 'visible' : 'hidden'}
       />
       <LoadingIcon loading={isLoading} />
-      {isGameOver ? <GameOverModal restart={restart} botd={getBOTD} /> : null}
+      {isGameOver ? <GameOverModal restart={restart} botd={getBurger} /> : null}
+      {isInfoOpen ? <InfoModal info={openInfoModal} /> : null}
       <Footer />
     </div>
   );

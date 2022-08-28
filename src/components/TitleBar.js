@@ -3,7 +3,7 @@ import './TitleBar.css';
 import logo from './img/burger.png';
 import infoIcon from './img/info.png';
 
-function TitleBar() {
+function TitleBar(props) {
   return (
     <nav>
       <ul className='navbar'>
@@ -13,7 +13,7 @@ function TitleBar() {
         </li>
 
         <li>
-          <button>
+          <button onClick={props.info}>
             <img src={infoIcon} alt='info' />
           </button>
         </li>
